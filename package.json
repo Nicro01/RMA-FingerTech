@@ -13,6 +13,8 @@
     "tw-elements": "^1.1.0",
     "vue": "^3.3.11",
     "vue-carousel": "^0.18.0",
+    "vue-router": "^4.2.5",
+    "vue-the-mask": "^0.11.1",
     "vue3-carousel": "^0.3.1"
   },
   "devDependencies": {
