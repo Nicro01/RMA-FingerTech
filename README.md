@@ -3,10 +3,10 @@
 ![FingerTech Logo](https://fingertech.com.br/content/img/logo.png)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Vue.js](https://img.shields.io/badge/Vue.js-2.x-brightgreen)](https://vuejs.org/)
-[![Vite](https://img.shields.io/badge/Vite-2.x-blue)](https://vitejs.dev/)
-[![PHP](https://img.shields.io/badge/PHP-7.x-blue)](https://www.php.net/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-2.x-blue)](https://tailwindcss.com/)
+[![Vue.js](https://img.shields.io/badge/Vue.js-3.x-brightgreen)](https://vuejs.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.x-blue)](https://vitejs.dev/)
+[![PHP](https://img.shields.io/badge/PHP-8.x-blue)](https://www.php.net/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.x-blue)](https://tailwindcss.com/)
 
 ## Description
 
