@@ -14,7 +14,7 @@ RMA - FingerTech is a digital asset management application designed to simplify 
 
 ## Installation and Deployment
 
-1. Clone the repository: `git clone https://github.com/Nicro01/RMA-FingerTech.git`
+1. Clone the repository
 2. Install dependencies: `npm install`
 
 ## Deploy
