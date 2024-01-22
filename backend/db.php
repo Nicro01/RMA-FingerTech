@@ -1,9 +1,9 @@
 <?php
 try {
     $con = new PDO(
-        'sqlsrv:Server=189.113.148.200, 5398; Database=Finger_Net',
-        'Finger_Tech',
-        '8r/%Vy1kGOW.~kV'
+        'sqlsrv:Server=; Database=',
+        '',
+        ''
     );
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
