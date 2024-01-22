@@ -50,10 +50,7 @@
       />
     </section>
 
-    <section
-      class="mt-48 w-6/12 mx-auto md:mt-40 pb-40 bg-slate-100 select-none"
-      id="form"
-    >
+    <section class="mt-48 w-6/12 mx-auto md:mt-40 pb-40 select-none" id="form">
       <div class="flex flex-wrap items-stretch mb-3 mx-auto">
         <select
           v-model="selectedSolicitation"
@@ -167,18 +164,25 @@
             Data da Compra *
           </label>
           <div class="mb-3 my-5 pt-0 flex flex-wrap">
-            <input
+            <!-- <input
               class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               aria-describedby="file_input_help"
               id="file_input"
               type="file"
               @change="validateFile"
+            /> -->
+            <input
+              type="file"
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              multiple
+              @change="handleFiles"
             />
+
             <p
               class="mt-1 text-sm text-gray-500 dark:text-gray-300"
               id="file_input_help"
             >
-              * PDF, JPG (Tamanho Máximo 5mb).
+              * PDF, JPG (Tamanho Máximo 5mb). {{ formInput.file.name }}
             </p>
           </div>
           <div class="mb-3 pt-0 flex flex-wrap" style="gap: 10px">
@@ -484,6 +488,7 @@ export default {
       selectedForm: null,
       formIndex: 0,
       form: [],
+      formData: new FormData(),
       formInput: {
         Nome: "",
         CNPJ: "",
@@ -498,7 +503,7 @@ export default {
         Data: "",
         NotaFiscal: "",
         Observacao: "",
-        file: "",
+        file: {},
         Garantia: "",
       },
     };
@@ -534,6 +539,24 @@ export default {
       });
   },
   methods: {
+    handleFiles(event) {
+      const files = event.target.files;
+      this.uploadFiles(files);
+    },
+    handleDrop(event) {
+      const files = event.dataTransfer.files;
+      this.uploadFiles(files);
+    },
+    uploadFiles(files) {
+      // Convert FileList to an array and send to server
+      const formData = new FormData();
+      Array.from(files).forEach((file) => {
+        this.formData.append("files[]", file);
+      });
+      this.formInput.file =
+        "http://rma.fingertech.com.br/nf/" + this.formData.get("files[]").name;
+      console.log(this.formData);
+    },
     acceptTerms(event) {
       this.termsAccept = this.selectedSolicitation;
       event.target.checked = false;
@@ -544,6 +567,23 @@ export default {
         .post("http://rma.fingertech.com.br/backend/index.php", this.form)
         .then((response) => {
           console.log(response);
+          if (response.status == 200) {
+            axios
+              .post(
+                "http://rma.fingertech.com.br/backend/ftp.php",
+                this.formData
+              )
+              .then((response) => {
+                console.log(response);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            alert(
+              "Ocorreu um erro ao enviar o formulário, tente novamente mais tarde!"
+            );
+          }
         })
         .catch((error) => {
           console.log(error);

@@ -8,7 +8,8 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
-    var_dump($data);
+
+    echo json_encode($data);
 
     if (isset($data)) {
         $date = new DateTime($data[0]['Data']);
@@ -24,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $observacao = $data[0]['Observacao'];
         $responsavel = $data[0]['Responsavel'];
         $garantia = $data[0]['Garantia'];
+        $file = $data[0]['file'];
 
         $stmt = $con->prepare("INSERT INTO TabRma (Data, Nome, CNPJ, Email, Telefone, Estado, Status, DataStatus, Observacao ,Responsavel, Garantia) VALUES (:Data, :Nome, :CNPJ, :Email, :Telefone, :Estado, :Status, :DataStatus, :Observacao ,:Responsavel, :Garantia)");
         $stmt->bindValue(':Data', $formattedDateStatus, PDO::PARAM_STR);
@@ -57,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            echo json_encode(['success' => true]);
+
         } else {
             echo json_encode(['success' => false, 'error' => $stmt->errorInfo()]);
         }

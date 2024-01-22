@@ -63,11 +63,18 @@
           </li>
 
           <li class="flex items-center">
+            <router-link
+              to="/search"
+              class="text-white bg-slate-600 active:bg-slate-900 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+              >Pesquisar RMA</router-link
+            >
+          </li>
+
+          <li class="flex items-center">
             <a
               href="http://suporte.fingertech.com.br/"
-              class="text-white active:bg-emerald-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+              class="text-white bg-[#264387] active:bg-[#264387] text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
               type="button"
-              style="background-color: #264387"
               target="_blank"
             >
               Para Desenvolvedores

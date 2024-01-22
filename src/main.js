@@ -6,11 +6,16 @@ import "./style.css";
 import App from "@/App.vue";
 
 import Index from "@/views/Index.vue";
+import Search from "@/views/Search.vue";
 
 const routes = [
   {
     path: "/",
     component: Index,
+  },
+  {
+    path: "/search",
+    component: Search,
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
